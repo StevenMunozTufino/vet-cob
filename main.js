@@ -46,3 +46,4 @@ function generarReceta() {
   // Imprimir la página automáticamente
   window.print();
 }
+window.onload = generarReceta;
