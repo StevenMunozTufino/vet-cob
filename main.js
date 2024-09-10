@@ -1,15 +1,3 @@
-function obtenerParametros() {
-    var parametros = {};
-    var query = window.location.search.substring(1);
-    var pares = query.split("&");
-    for (var i = 0; i < pares.length; i++) {
-      var par = pares[i].split("=");
-      parametros[par[0]] = decodeURIComponent(par[1]); // Decodificar el valor del parámetro
-    }
-    return parametros;
-  }
-
-// Función para generar la receta médica
 function generarReceta() {
   var parametros = obtenerParametros();
 
@@ -23,6 +11,12 @@ function generarReceta() {
   if ('mascota' in parametros) {
     var mascotaElement = document.getElementById("nombre-mascota");
     mascotaElement.textContent += parametros['mascota'];
+  }
+
+  // Verificar si se recibió el diagnóstico
+  if ('dx' in parametros) {
+    var dxElement = document.getElementById("diagnostico-receta");
+    dxElement.textContent += parametros['dx'];
   }
 
   var recetaScript = document.getElementById("receta-script");
@@ -52,6 +46,3 @@ function generarReceta() {
   // Imprimir la página automáticamente
   window.print();
 }
-
-// Llamar a la función cuando la página haya cargado
-window.onload = generarReceta;
