@@ -25,6 +25,12 @@ function generarReceta() {
     mascotaElement.textContent += parametros['mascota'];
   }
 
+  // Verificar si se recibió el diagnóstico
+  if ('dx' in parametros) {
+    var dxElement = document.getElementById("diagnostico-receta");
+    dxElement.textContent += parametros['dx'];
+  }
+
   var recetaScript = document.getElementById("receta-script");
   var receta = document.createElement("div");
   receta.className = "receta";
